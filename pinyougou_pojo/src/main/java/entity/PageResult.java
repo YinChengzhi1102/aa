@@ -17,5 +17,20 @@ public class PageResult implements Serializable {
         this.total = total;
         this.rows = rows;
     }
-//getter  and setter .....
+
+    public long getTotal() {
+        return total;
+    }
+
+    public void setTotal(long total) {
+        this.total = total;
+    }
+
+    public List getRows() {
+        return rows;
+    }
+
+    public void setRows(List rows) {
+        this.rows = rows;
+    }
 }

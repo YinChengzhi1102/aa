@@ -1,7 +1,11 @@
 package com.pinyougou.sellergoods.service.impl;
+
 import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.pinyougou.mapper.TbAddressMapper;
+import com.pinyougou.pojo.TbAddress;
+import com.pinyougou.pojo.TbAddressExample;
 import com.pinyougou.sellergoods.service.AddressService;
 import entity.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,12 +79,12 @@ public class AddressServiceImpl implements AddressService {
 	}
 	
 	
-		@Override
+	@Override
 	public PageResult findPage(TbAddress address, int pageNum, int pageSize) {
 		PageHelper.startPage(pageNum, pageSize);
 		
 		TbAddressExample example=new TbAddressExample();
-		Criteria criteria = example.createCriteria();
+		TbAddressExample.Criteria criteria = example.createCriteria();
 		
 		if(address!=null){			
 						if(address.getUserId()!=null && address.getUserId().length()>0){

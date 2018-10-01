@@ -42,14 +42,14 @@ public interface AreasService {
 	 * @param id
 	 * @return
 	 */
-	public TbAreas findOne(Long id);
+	public TbAreas findOne(Integer id);
 	
 	
 	/**
 	 * 批量删除
 	 * @param ids
 	 */
-	public void delete(Long[] ids);
+	public void delete(Integer[] ids);
 
 	/**
 	 * 分页

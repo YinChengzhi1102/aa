@@ -1,12 +1,16 @@
 package com.pinyougou.sellergoods.service.impl;
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.pinyougou.mapper.TbUserMapper;
+import com.pinyougou.pojo.TbUser;
+import com.pinyougou.pojo.TbUserExample;
 import com.pinyougou.sellergoods.service.UserService;
-
 import entity.PageResult;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 /**
  * 服务实现层
@@ -80,7 +84,7 @@ public class UserServiceImpl implements UserService {
 		PageHelper.startPage(pageNum, pageSize);
 		
 		TbUserExample example=new TbUserExample();
-		Criteria criteria = example.createCriteria();
+		TbUserExample.Criteria criteria = example.createCriteria();
 		
 		if(user!=null){			
 						if(user.getUsername()!=null && user.getUsername().length()>0){

@@ -1,7 +1,8 @@
 package com.pinyougou.sellergoods.service;
-import java.util.List;
-
+import com.pinyougou.pojo.TbSeller;
 import entity.PageResult;
+
+import java.util.List;
 /**
  * 服务层接口
  * @author Administrator
@@ -40,14 +41,14 @@ public interface SellerService {
 	 * @param id
 	 * @return
 	 */
-	public TbSeller findOne(Long id);
+	public TbSeller findOne(String id);
 	
 	
 	/**
 	 * 批量删除
 	 * @param ids
 	 */
-	public void delete(Long[] ids);
+	public void delete(String[] ids);
 
 	/**
 	 * 分页

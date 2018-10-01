@@ -1,12 +1,16 @@
 package com.pinyougou.sellergoods.service.impl;
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.pinyougou.mapper.TbProvincesMapper;
+import com.pinyougou.pojo.TbProvinces;
+import com.pinyougou.pojo.TbProvincesExample;
 import com.pinyougou.sellergoods.service.ProvincesService;
-
 import entity.PageResult;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 /**
  * 服务实现层
@@ -60,7 +64,7 @@ public class ProvincesServiceImpl implements ProvincesService {
 	 * @return
 	 */
 	@Override
-	public TbProvinces findOne(Long id){
+	public TbProvinces findOne(Integer id){
 		return provincesMapper.selectByPrimaryKey(id);
 	}
 
@@ -68,8 +72,8 @@ public class ProvincesServiceImpl implements ProvincesService {
 	 * 批量删除
 	 */
 	@Override
-	public void delete(Long[] ids) {
-		for(Long id:ids){
+	public void delete(Integer[] ids) {
+		for(Integer id:ids){
 			provincesMapper.deleteByPrimaryKey(id);
 		}		
 	}
@@ -80,7 +84,7 @@ public class ProvincesServiceImpl implements ProvincesService {
 		PageHelper.startPage(pageNum, pageSize);
 		
 		TbProvincesExample example=new TbProvincesExample();
-		Criteria criteria = example.createCriteria();
+		TbProvincesExample.Criteria criteria = example.createCriteria();
 		
 		if(provinces!=null){			
 						if(provinces.getProvinceid()!=null && provinces.getProvinceid().length()>0){

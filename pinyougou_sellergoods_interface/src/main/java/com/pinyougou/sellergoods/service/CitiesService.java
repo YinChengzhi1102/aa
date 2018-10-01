@@ -1,7 +1,9 @@
 package com.pinyougou.sellergoods.service;
-import java.util.List;
 
+import com.pinyougou.pojo.TbCities;
 import entity.PageResult;
+
+import java.util.List;
 /**
  * 服务层接口
  * @author Administrator
@@ -40,14 +42,14 @@ public interface CitiesService {
 	 * @param id
 	 * @return
 	 */
-	public TbCities findOne(Long id);
+	public TbCities findOne(Integer id);
 	
 	
 	/**
 	 * 批量删除
 	 * @param ids
 	 */
-	public void delete(Long[] ids);
+	public void delete(Integer[] ids);
 
 	/**
 	 * 分页

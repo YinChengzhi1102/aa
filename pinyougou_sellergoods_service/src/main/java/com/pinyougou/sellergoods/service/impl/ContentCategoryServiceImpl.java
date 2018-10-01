@@ -1,12 +1,16 @@
 package com.pinyougou.sellergoods.service.impl;
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.pinyougou.mapper.TbContentCategoryMapper;
+import com.pinyougou.pojo.TbContentCategory;
+import com.pinyougou.pojo.TbContentCategoryExample;
 import com.pinyougou.sellergoods.service.ContentCategoryService;
-
 import entity.PageResult;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 /**
  * 服务实现层
@@ -80,7 +84,7 @@ public class ContentCategoryServiceImpl implements ContentCategoryService {
 		PageHelper.startPage(pageNum, pageSize);
 		
 		TbContentCategoryExample example=new TbContentCategoryExample();
-		Criteria criteria = example.createCriteria();
+		TbContentCategoryExample.Criteria criteria = example.createCriteria();
 		
 		if(contentCategory!=null){			
 						if(contentCategory.getName()!=null && contentCategory.getName().length()>0){

@@ -1,12 +1,16 @@
 package com.pinyougou.sellergoods.service.impl;
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.pinyougou.mapper.TbSellerMapper;
+import com.pinyougou.pojo.TbSeller;
+import com.pinyougou.pojo.TbSellerExample;
 import com.pinyougou.sellergoods.service.SellerService;
-
 import entity.PageResult;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 /**
  * 服务实现层
@@ -33,7 +37,7 @@ public class SellerServiceImpl implements SellerService {
 	@Override
 	public PageResult findPage(int pageNum, int pageSize) {
 		PageHelper.startPage(pageNum, pageSize);		
-		Page<TbSeller> page=   (Page<TbSeller>) sellerMapper.selectByExample(null);
+		Page<TbSeller> page= (Page<TbSeller>) sellerMapper.selectByExample(null);
 		return new PageResult(page.getTotal(), page.getResult());
 	}
 
@@ -60,7 +64,7 @@ public class SellerServiceImpl implements SellerService {
 	 * @return
 	 */
 	@Override
-	public TbSeller findOne(Long id){
+	public TbSeller findOne(String id){
 		return sellerMapper.selectByPrimaryKey(id);
 	}
 
@@ -68,8 +72,8 @@ public class SellerServiceImpl implements SellerService {
 	 * 批量删除
 	 */
 	@Override
-	public void delete(Long[] ids) {
-		for(Long id:ids){
+	public void delete(String[] ids) {
+		for(String id:ids){
 			sellerMapper.deleteByPrimaryKey(id);
 		}		
 	}
@@ -80,7 +84,7 @@ public class SellerServiceImpl implements SellerService {
 		PageHelper.startPage(pageNum, pageSize);
 		
 		TbSellerExample example=new TbSellerExample();
-		Criteria criteria = example.createCriteria();
+		TbSellerExample.Criteria criteria = example.createCriteria();
 		
 		if(seller!=null){			
 						if(seller.getSellerId()!=null && seller.getSellerId().length()>0){

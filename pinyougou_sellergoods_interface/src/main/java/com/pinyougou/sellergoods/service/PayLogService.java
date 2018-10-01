@@ -1,7 +1,8 @@
 package com.pinyougou.sellergoods.service;
-import java.util.List;
-
+import com.pinyougou.pojo.TbPayLog;
 import entity.PageResult;
+
+import java.util.List;
 /**
  * 服务层接口
  * @author Administrator
@@ -40,14 +41,14 @@ public interface PayLogService {
 	 * @param id
 	 * @return
 	 */
-	public TbPayLog findOne(Long id);
+	public TbPayLog findOne(String id);
 	
 	
 	/**
 	 * 批量删除
 	 * @param ids
 	 */
-	public void delete(Long[] ids);
+	public void delete(String[] ids);
 
 	/**
 	 * 分页

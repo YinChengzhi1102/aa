@@ -1,12 +1,16 @@
 package com.pinyougou.sellergoods.service.impl;
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.pinyougou.mapper.TbCitiesMapper;
+import com.pinyougou.pojo.TbCities;
+import com.pinyougou.pojo.TbCitiesExample;
 import com.pinyougou.sellergoods.service.CitiesService;
-
 import entity.PageResult;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 /**
  * 服务实现层
@@ -60,7 +64,7 @@ public class CitiesServiceImpl implements CitiesService {
 	 * @return
 	 */
 	@Override
-	public TbCities findOne(Long id){
+	public TbCities findOne(Integer id){
 		return citiesMapper.selectByPrimaryKey(id);
 	}
 
@@ -68,8 +72,8 @@ public class CitiesServiceImpl implements CitiesService {
 	 * 批量删除
 	 */
 	@Override
-	public void delete(Long[] ids) {
-		for(Long id:ids){
+	public void delete(Integer[] ids) {
+		for(Integer id:ids){
 			citiesMapper.deleteByPrimaryKey(id);
 		}		
 	}
@@ -80,7 +84,7 @@ public class CitiesServiceImpl implements CitiesService {
 		PageHelper.startPage(pageNum, pageSize);
 		
 		TbCitiesExample example=new TbCitiesExample();
-		Criteria criteria = example.createCriteria();
+		TbCitiesExample.Criteria criteria = example.createCriteria();
 		
 		if(cities!=null){			
 						if(cities.getCityid()!=null && cities.getCityid().length()>0){
